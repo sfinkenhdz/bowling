@@ -24,11 +24,82 @@ describe ("new bowlingGame()", function() {
     });
   });
 
-//   describe("and whose grow function", function() {
-//     xit("should increase the age of the tree by 1 year", function() {
-//       tree.grow();
-//       expect(tree.age).toEqual(1);
-//     });
+  describe("and whose roll1 function", function() {
+    it("should roll a number between 0 and 10", function() {
+      game.roll1();
+      expect(game.pins).toBeLessThan(11);
+    });
+  });
+
+  describe("and whose checkStrike function", function() {
+    it("should correctly identify a strike", function() {
+      game.roll1();
+      game.pins = 10;
+      game.checkStrike();
+      expect(game.strike).toBe(true);
+    });
+     it("should not identify a strike when less than 10 pins are hit on roll 1", function() {
+      game.roll1();
+      game.pins = 7;
+      game.checkStrike();
+      expect(game.strike).toBe(false);
+    });
+  });
+
+describe("and whose score1 function", function() {
+     it("should put the number of pins rolled into frame when a strike is rolled", function() {
+      game.roll1();
+      game.pins = 10;
+      game.score1();
+      expect(game.frame[0]).toBe(10);
+    });
+     it("should put the number of pins rolled into frame when a strike is not rolled", function() {
+      game.roll1();
+      game.pins = 7;
+      game.score1();
+      expect(game.frame[0]).toBe(7);
+    });
+  });
+
+  describe("and whose roll2 function", function() {
+    it("should roll a number between 0 and pins", function() {
+      game.roll1();
+      game.pins = 7;
+      game.roll2();
+      expect(game.pins2).toBeLessThan(7);
+    });
+  });
+
+  describe("and whose score2 function", function() {
+   it("should push 0 into the second roll of the frame if a strike was rolled", function() {
+      game.roll1();
+      game.score1();
+      game.pins = 10;
+      game.checkStrike();
+      game.roll2();
+      game.score2();
+      expect(game.frame[1]).toBe(0);
+    });
+  })
+
+  describe("and whose checkSpare function", function() {
+    it("should correctly identify a spare", function() {
+      game.roll1();
+      game.pins = 7;
+      game.pins2 = 3;
+      game.checkSpare();
+      expect(game.spare).toBe(true);
+    });
+  })
+
+});
+
+
+
+
+      // expect(game.strike).toBeFalse;
+
+
 
 //     xit("should increase the height of the tree by 10 inches", function() {
 //       tree.grow();
@@ -93,5 +164,5 @@ describe ("new bowlingGame()", function() {
 //         expect(orange.diameter).toBeGreaterThan(0);
 //       });
 //     });
-});
+
 
