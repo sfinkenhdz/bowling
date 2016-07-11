@@ -20,7 +20,7 @@ describe ("new bowlingGame()", function() {
       expect(game.frame.length).toEqual(0);
     });
     it("score is an empty array", function() {
-      expect(game.score.length).toEqual(0);
+      expect(game.scorecard.length).toEqual(0);
     });
   });
 
@@ -109,6 +109,23 @@ describe("and whose score1 function", function() {
       expect(game.frame.length).toBe(0);
     });
   })
+
+ describe("and whose saveScore", function() {
+    it("saves frame to scorecard", function() {
+      game.frame = [3,1];
+      game.saveScore();
+      expect(game.scorecard[0]).toEqual([3,1]);
+    });
+  });
+
+ describe("and whose turn", function() {
+    xit("", function() {
+      // game.frame = [3,1];
+      // game.saveScore();
+      // expect(game.scorecard[0]).toEqual([3,1]);
+    });
+  });
+
 
 });
 
