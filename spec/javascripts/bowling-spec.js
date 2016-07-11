@@ -92,6 +92,24 @@ describe("and whose score1 function", function() {
     });
   })
 
+ describe("and whose turnEnds", function() {
+    it("sets strike to false", function() {
+      game.strike = true;
+      game.turnEnds();
+      expect(game.strike).toBe(false);
+    });
+    it("sets spare to false", function() {
+      game.spare = true;
+      game.turnEnds();
+      expect(game.spare).toBe(false);
+    });
+    it("resets frame as an empty array", function() {
+      game.frame = [4, 3];
+      game.turnEnds();
+      expect(game.frame.length).toBe(0);
+    });
+  })
+
 });
 
 

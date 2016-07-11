@@ -39,3 +39,9 @@ bowlingGame.prototype.roll2 = function() {
     this.frame.push(this.pins2);
   }
 
+  bowlingGame.prototype.turnEnds = function() {
+  this.strike = false;
+  this.spare = false;
+  this.frame = [];
+  }
+
