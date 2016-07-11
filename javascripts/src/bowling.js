@@ -2,7 +2,7 @@ function bowlingGame() {
   this.frame = [];
   this.spare = false;
   this.strike = false;
-  this.score = [];
+  this.scorecard = [];
 }
 
 bowlingGame.prototype.roll1 = function() {
@@ -44,4 +44,18 @@ bowlingGame.prototype.roll2 = function() {
   this.spare = false;
   this.frame = [];
   }
+
+bowlingGame.prototype.saveScore = function() {
+  this.scorecard.push(this.frame);
+}
+
+  bowlingGame.prototype.turn = function() {
+    this.roll1();
+    this.checkStrike();
+    this.score1();
+    this.roll2();
+    this.checkSpare();
+    this.score2();
+    this.saveScore();
+  };
 
