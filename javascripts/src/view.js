@@ -14,6 +14,7 @@ $(document).ready(function(){
     var roll2Score = game.frame[1];
     var frameTotal = roll1Score + roll2Score;
     var frameScore = prevScore + roll1Score + roll2Score;
+
     if (roll1Score == 10) {
       roll2Score = "X";
       roll1Score = "-";
@@ -28,6 +29,7 @@ $(document).ready(function(){
     $location2.text(roll2Score);
 
     var $frameScoreLoc = $( "div.frame-total:empty" ).first();
+    var $gameTotalLoc = $( "div.total-total" );
     var $prevFrameScoreLoc = $($frameScoreLoc.parents().prev().find(".frame-total"));
 
     if (game.scorecard.length > 1 && prevFrame[0] == 10) {
@@ -41,12 +43,15 @@ $(document).ready(function(){
       var spareScore = afterSpareScore - roll1Score - roll2Score;
       $frameScoreLoc.text(afterSpareScore);
       $prevFrameScoreLoc.text(spareScore);
-
     }
     else {
       $frameScoreLoc.text(frameScore);
     }
-      game.turnEnds();
+    if (game.scorecard.length == 10){
+        $gameTotalLoc.text(frameScore);
+        // doesn't work if frame 9 = spare
+    }
+    game.turnEnds();
   });
 
 });
