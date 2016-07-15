@@ -8,26 +8,28 @@ $(document).ready(function(){
     var $location2 = $location.next( "div.score:empty" ).first();
     var prevFrame = game.scorecard[game.scorecard.length-2];
     var currentFrame = game.scorecard[game.scorecard.length-1];
-    var prevScore = 0;
     var prevScore = Number($location.parents().prev().find('.frame-total').text());
     var prevPrevScore = Number($location.parents().prev().prev().find('.frame-total').text());
-    var roll1Score = game.frame[0];
-    var roll2Score = game.frame[1];
+    var roll1Score = currentFrame[0];
+    var roll2Score = currentFrame[1];
+    var roll1Display = currentFrame[0];
+    var roll2Display = currentFrame[1];
     var frameTotal = roll1Score + roll2Score;
     var frameScore = prevScore + roll1Score + roll2Score;
+    var frameDisplay = prevScore + roll1Score + roll2Score;
 
     if (roll1Score == 10) {
-      roll2Score = "X";
-      roll1Score = "-";
-      frameScore = "-";
+      roll2Display = "X";
+      roll1Display = "-";
+      frameDisplay = "-";
     }
     else if (roll1Score != 10 && frameTotal == 10) {
-      roll2Score = "/";
-      frameScore = "-";
+      roll2Display = "/";
+      frameDisplay = "-";
     }
 
-    $location.text(roll1Score);
-    $location2.text(roll2Score);
+    $location.text(roll1Display);
+    $location2.text(roll2Display);
 
     var $frameScoreLoc = $( "div.frame-total:empty" ).first();
     var $gameTotalLoc = $( "div.total-total" );
@@ -47,12 +49,17 @@ $(document).ready(function(){
     }
     else {
       $frameScoreLoc.text(frameScore);
+      console.log("prevScoreONE: " + prevScore);
     }
+
     if (game.scorecard.length == 10){
         $gameTotalLoc.text(frameScore);
-        // doesn't work if frame 9 = spare
+        console.log("framescore: " + frameScore);
+        console.log("prevScoreTWO: " + prevScore);
+
+        // doesn't work if frame 9 = spare/strike
     }
+
     game.turnEnds();
   });
-
 });
