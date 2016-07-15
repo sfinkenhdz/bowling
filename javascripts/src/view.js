@@ -8,6 +8,7 @@ $(document).ready(function(){
     var $location2 = $location.next( "div.score:empty" ).first();
     var prevFrame = game.scorecard[game.scorecard.length-2];
     var currentFrame = game.scorecard[game.scorecard.length-1];
+    var prevScore = 0;
     var prevScore = Number($location.parents().prev().find('.frame-total').text());
     var prevPrevScore = Number($location.parents().prev().prev().find('.frame-total').text());
     var roll1Score = game.frame[0];
