@@ -49,17 +49,20 @@ $(document).ready(function(){
     }
     else {
       $frameScoreLoc.text(frameScore);
-      console.log("prevScoreONE: " + prevScore);
     }
 
-    if (game.scorecard.length == 10){
+    if (game.scorecard.length == 10 && game.scorecard[8][0] == 10){
+      frameScore += game.scorecard[9][0];
+      frameScore += game.scorecard[9][1];
+      $gameTotalLoc.text(frameScore);
+    }
+    else if (game.scorecard.length == 10 && game.scorecard[8][0] + game.scorecard[8][1] == 10){
+        frameScore += game.scorecard[9][0];
         $gameTotalLoc.text(frameScore);
-        console.log("framescore: " + frameScore);
-        console.log("prevScoreTWO: " + prevScore);
-
-        // doesn't work if frame 9 = spare/strike
     }
-
+    else if (game.scorecard.length == 10){
+        $gameTotalLoc.text(frameScore);
+    }
     game.turnEnds();
   });
 });
