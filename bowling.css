@@ -64,3 +64,17 @@ html {
   text-align: center;
   padding: 10px;
 }
+
+.total-total {
+  height: 40px;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}
+
+.total-box {
+  height: 100px;
+  width: 8.5%;
+  border: solid 2px;
+  margin-top: 5px;
+}
